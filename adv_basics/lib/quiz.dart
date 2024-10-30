@@ -27,6 +27,12 @@ class _QuizState extends State<Quiz>{
   
   @override
   Widget build(BuildContext context) {
+    //Conditional with if
+    Widget widgetScreen = StartPage(switchScreen);
+    if(activeScreen == 'start-questions'){
+      widgetScreen = const QuizQuestions();
+    }
+
     return MaterialApp(
       home : Scaffold(
         body: Container(
@@ -35,7 +41,9 @@ class _QuizState extends State<Quiz>{
                   colors: [Color.fromARGB(255, 0, 61, 245), Color.fromARGB(255, 73, 132, 233)],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight)),
-          child: activeScreen == 'start-screen'? StartPage(switchScreen): const QuizQuestions(),  //Using teneray operation comperator
+          // child: activeScreen == 'start-screen'? StartPage(switchScreen): const QuizQuestions(),  // Using teneray operation comperator
+          child: widgetScreen,
+
       )
     ));
   }
