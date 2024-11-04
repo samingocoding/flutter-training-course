@@ -1,3 +1,4 @@
+import 'package:adv_basics/answer_button.dart';
 import 'package:adv_basics/start_page.dart';
 import 'package:flutter/material.dart';
 
@@ -17,16 +18,20 @@ class _QuizQuestionState extends State<QuizQuestions>{
   
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home : Scaffold(
-        body: Container(
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [Color.fromARGB(255, 0, 61, 245), Color.fromARGB(255, 73, 132, 233)],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight)),
-          child: const Text("Hello question"),
-      )
-    ));
+    return SizedBox(
+      width: double.infinity,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text("Question here ...", style: TextStyle(color: Colors.white ),),
+          const SizedBox(height: 20,),
+          AnswerButton(text: "Answer 1....", onPress: (){}),
+          AnswerButton(text: "Answer 2....", onPress: (){}),
+          AnswerButton(text: "Answer 3....", onPress: (){}),
+          AnswerButton(text: "Answer 4....", onPress: (){}),
+        ],
+
+      ),
+    );
   }
 }

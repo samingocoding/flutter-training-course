@@ -3,5 +3,5 @@ import 'package:adv_basics/start_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const Quiz());
+  runApp(const Quiz()); 
 }
