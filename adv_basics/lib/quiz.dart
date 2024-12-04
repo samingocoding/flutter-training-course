@@ -1,4 +1,6 @@
+import 'package:adv_basics/data/questions.dart';
 import 'package:adv_basics/quiz_questions.dart';
+import 'package:adv_basics/results_screen.dart';
 import 'package:adv_basics/start_page.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +13,7 @@ class Quiz extends StatefulWidget{
   }
 }
 class _QuizState extends State<Quiz>{
+  List<String> selectedAnswers = [];
 
   var activeScreen;
   
@@ -24,13 +27,25 @@ class _QuizState extends State<Quiz>{
       activeScreen = 'start-questions';
     });
   }
+  void chooseAnswer(String choosedAnswer){
+    selectedAnswers.add(choosedAnswer);
+    if(selectedAnswers.length == questions.length){
+       setState((){ 
+        selectedAnswers = [];
+      activeScreen = 'result-screen';
+    });
+    }
+  }
   
   @override
   Widget build(BuildContext context) {
     //Conditional with if
     Widget widgetScreen = StartPage(switchScreen);
     if(activeScreen == 'start-questions'){
-      widgetScreen = const QuizQuestions();
+      widgetScreen =  QuizQuestions(onSelectAnswer: chooseAnswer);
+    }
+    if(activeScreen == 'result-screen'){
+      widgetScreen =  ResultsScreen(choosedAnswers: selectedAnswers,);
     }
 
     return MaterialApp(
